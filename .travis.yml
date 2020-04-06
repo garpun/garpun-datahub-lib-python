@@ -1,0 +1,38 @@
+language: python
+os: linux
+cache:
+  pip: true
+matrix:
+  include:
+    - name: "Run linter"
+      python: '3.6'
+      env: NOXSESSION="lint"
+    - name: "Run code coverage"
+      python: '3.6'
+      env: NOXSESSION="cover"
+
+    - name: "Run linux with python 3.6"
+      python: '3.6'
+      env: NOXSESSION="tests-3.6"
+    - name: "Run linux with python 3.7"
+      python: '3.7'
+      env: NOXSESSION="tests-3.7"
+      dist: xenial    # required for Python 3.7 (travis-ci/travis-ci#9069)
+    - name: "Run linux with python 3.8"
+      python: '3.8'
+      env: NOXSESSION="tests-3.8"
+      dist: xenial
+
+    - name: "Run osx with python 3.7"
+      os: osx
+      language: generic
+      python: 3.7
+      osx_image: xcode11.3
+      env: NOXSESSION="tests-3.7"
+
+install:
+  #  - sudo easy_install pip # TODO: remove once https://travis-ci.community/t/missed-pip-after-xcode-image-update/7802 is fixed
+  - pip3 install git+https://github.com/cs01/nox.git@5ea70723e9e6#egg=nox
+
+script: nox --non-interactive --session "$NOXSESSION"
+

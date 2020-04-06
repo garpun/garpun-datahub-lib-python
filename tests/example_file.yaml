@@ -1,0 +1,11 @@
+expiration_time: 2020-04-03 08:20:49.785910+00:00
+expire_limit: 2
+pandas_types:
+  convert_dates: []
+  dtype:
+    0: string
+    1: string
+    2: float64
+    3: float64
+    4: float64
+    5: float64

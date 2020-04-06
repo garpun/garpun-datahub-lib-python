@@ -1,0 +1,48 @@
+cache:
+  - '%LOCALAPPDATA%\pip\Cache'
+
+environment:
+  matrix:
+    - PYTHON: "C:\\Python38-x64"
+      PYTHON_VERSION: "3.8.x"
+      PYTHON_ARCH: "64"
+      EXTRA_ARGS: "tests-3.8"
+    - PYTHON: "C:\\Python38"
+      PYTHON_VERSION: "3.8.x"
+      PYTHON_ARCH: "32"
+      EXTRA_ARGS: "tests-3.8"
+    - PYTHON: "C:\\Python37-x64"
+      PYTHON_VERSION: "3.7.x"
+      PYTHON_ARCH: "64"
+      EXTRA_ARGS: "tests-3.7"
+    - PYTHON: "C:\\Python37"
+      PYTHON_VERSION: "3.7.x"
+      PYTHON_ARCH: "32"
+      EXTRA_ARGS: "tests-3.7"
+    - PYTHON: "C:\\Python36-x64"
+      PYTHON_VERSION: "3.6.x"
+      PYTHON_ARCH: "64"
+      EXTRA_ARGS: "tests-3.6"
+    - PYTHON: "C:\\Python36"
+      PYTHON_VERSION: "3.6.x"
+      PYTHON_ARCH: "32"
+      EXTRA_ARGS: "tests-3.6"
+
+install:
+    - '%PYTHON%\\python.exe -m pip install git+https://github.com/cs01/nox.git@5ea70723e9e6#egg=nox'
+
+build: off
+
+test_script:
+    - "%PYTHON%\\python.exe -m nox --non-interactive --session  %EXTRA_ARGS%"
+
+skip_commits:
+  files:
+    - docs/**/*
+    - '**/*.rst'
+    - '**/*.md'
+    - .gitignore
+    - .travis.yml
+
+
+skip_branch_with_pr: true
