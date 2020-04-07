@@ -1,4 +1,4 @@
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 __package_name__ = "garpundatahub"
 
 if __name__ == "__main__":
