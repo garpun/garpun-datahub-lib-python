@@ -3,7 +3,7 @@
 
 |build| |pypi|
 
-.. |build| image:: https://travis-ci.org/garpun/garpun-auth-library-python.svg?branch=master
+.. |build| image:: https://travis-ci.org/garpun/garpun-datahub-lib-python.svg?branch=master
    :target: https://travis-ci.org/garpun/garpun-datahub-lib-python
 .. |pypi| image:: https://img.shields.io/pypi/v/garpunauth.svg
    :target: https://pypi.python.org/pypi/garpundatahub
@@ -16,7 +16,7 @@
 этой
 `инструкцией <https://cloud.garpun.com/authenticate/service_account/>`__.
 
-Установите garpun-datahub
+Установите garpundatahub
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Поддерживается Python 3.6+ Поддерживаемые операционные системы: OSx,

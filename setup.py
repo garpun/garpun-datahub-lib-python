@@ -28,7 +28,7 @@ setup(
     version=info.__version__,
     description="Garpun DataHub API Library for Python",
     long_description=long_description,
-    url="https://github.com/garpun/garpun-auth-library-python",
+    url="https://github.com/garpun/garpun-datahub-lib-python",
     author="Garpun Cloud",
     author_email="support@garpun.com",
     license="Apache 2.0",
