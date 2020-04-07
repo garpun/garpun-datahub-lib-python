@@ -25,7 +25,7 @@ Windows, Ubuntu.
 Внимание! Для использования функий оперирующих с типом Dataframe
 необходимо дополнительно установить pandas==1.0.3
 
-``shell script pip3 install garpundatahub --upgrade --no-cache``
+``pip3 install garpundatahub --upgrade --no-cache``
 
 Full Examples
 -------------

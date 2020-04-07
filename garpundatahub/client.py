@@ -17,4 +17,9 @@ class DataHubClient(object):
         url = "https://datahub-api.garpun.com/v1/metaql/query"
         session: AuthorizedSession = AuthorizedSession(credentials=self.credentials)
         json_data = {"query": query, "shardKey": shard_key}
-        return session.post(url, stream=True, json=json_data)
+        response = session.post(url, stream=True, json=json_data)
+
+        if response.status_code != 200:
+            raise Exception(f"Status code is '{response.status_code}'. Reason: '{response.text}'")
+
+        return response

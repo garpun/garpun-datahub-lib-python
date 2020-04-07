@@ -5,7 +5,7 @@ import shutil
 from os import path
 from tempfile import gettempdir
 from datetime import datetime, timedelta, timezone
-from typing import List
+from typing import List, Iterator, Dict
 
 import requests
 from requests import Response
@@ -190,3 +190,13 @@ class DataHub(object):
 
         settings.update(**yaml_data.get("pandas_types", {}))
         return read_json(**settings)
+
+    def download_query_as_dict(self, query: str, shard_key: int = None) -> Iterator[Dict]:
+        """
+        :param query: Запрос в формате metaql.
+        :param shard_key: Обязательной только для шардированных данных. Например для работы с ключевыми словами
+        :return: Iterator[Dict]
+        """
+
+        response: Response = self.call_metaql(query, shard_key)
+        return response.iter_lines(delimiter="\n", decode_unicode="utf-8")
