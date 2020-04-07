@@ -5,7 +5,7 @@
 
 .. |build| image:: https://travis-ci.org/garpun/garpun-datahub-lib-python.svg?branch=master
    :target: https://travis-ci.org/garpun/garpun-datahub-lib-python
-.. |pypi| image:: https://img.shields.io/pypi/v/garpunauth.svg
+.. |pypi| image:: https://img.shields.io/pypi/v/garpundatahub.svg
    :target: https://pypi.python.org/pypi/garpundatahub
 
 Получение ключа сервисного аккаунта
