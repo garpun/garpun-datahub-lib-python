@@ -56,7 +56,7 @@ class DataHub(object):
         return {"dtype": dtype, "convert_dates": convert_dates}
 
     @staticmethod
-    def __unic_query_name(query: str):
+    def __unic_query_name(query: str) -> str:
         pattern = re.compile(r"\s+")
         query = re.sub(pattern, " ", query)
         table_name = query.lower().split(" from ")[-1].split(" ")[0].strip()
@@ -66,9 +66,9 @@ class DataHub(object):
         return table_name + "__" + query_md5
 
     @staticmethod
-    def __is_time_expired(yaml_data: dict):
+    def __is_time_expired(yaml_data: dict) -> bool:
         now = datetime.now(timezone.utc)
-        return now >= yaml_data.get("expiration_time", now) if yaml_data else now
+        return now >= (yaml_data.get("expiration_time", now) if yaml_data else now)
 
     def __save_response_to_file(self, *, response: Response, pathfile: str, save_metadata: bool, expire_limit: int) -> None:
         with open(pathfile + ".json.gz", "wb") as out_file:

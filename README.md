@@ -3,7 +3,7 @@
 ### Получение ключа сервисного аккаунта  
 
 Для начала работы с библиотекой вам необходимо получить json файл с ключом от сервисного аккаунта. 
-Если у вас его ещё нет воспользуйтесь этой [инструкцией](https://github.com/garpun/garpun-datahub/tree/master/examples). 
+Если у вас его ещё нет воспользуйтесь этой [инструкцией](https://cloud.garpun.com/authenticate/service_account/). 
 
 ### Установите garpun-datahub 
 
@@ -13,17 +13,17 @@
 Внимание! Для использования функий оперирующих с типом Dataframe необходимо дополнительно установить pandas==1.0.3  
 
 ```shell script
-pip3 install garpun-datahub --upgrade --no-cache
+pip3 install garpun-datahub-lib-python --upgrade --no-cache
 ```
 
 ## Full Examples
-[Полный список примеров](https://github.com/garpun/garpun-datahub/tree/master/examples)
+[Полный список примеров](https://github.com/garpun/garpun-datahub-lib-python/tree/master/examples)
 
 ## Usage
 
 ```python
-from datahub.client import DataHubClient
-from datahub.datahub import DataHub
+from garpundatahub.client import DataHubClient
+from garpundatahub.datahub import DataHub
 from pandas import DataFrame
 
 # Берем настройки из файла.

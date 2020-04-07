@@ -5,7 +5,7 @@ from codecs import open
 from os import path
 
 from setuptools import setup
-from datahub import info
+from garpundatahub import info
 
 if sys.version_info < (3, 6, 0):
     print("Python 3.6+ is required")
@@ -44,7 +44,7 @@ setup(
     install_requires=install_requires,
     dependency_links=dependency_links,
     python_requires=">=3.6",
-    packages=["datahub"],
+    packages=["garpundatahub"],
     package_data={"": ["LICENSE"]},
     include_package_data=True,
 )

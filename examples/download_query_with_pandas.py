@@ -1,5 +1,5 @@
-from datahub.client import DataHubClient
-from datahub.datahub import DataHub
+from garpundatahub.client import DataHubClient
+from garpundatahub.datahub import DataHub
 from pandas import DataFrame
 
 # Берем настройки из файла.
@@ -7,7 +7,7 @@ from pandas import DataFrame
 api_client = DataHubClient.from_service_account_file("../creds.json")
 garpun_datahub = DataHub(api_client=api_client)
 
-# metaql запрос. Подробнее https://cloud.garpun.com/apis/datahub/overview/
+# metaql запрос. Подробнее https://cloud.garpun.com/api_datahub/metaql/
 query = "select id, name from adplatform.client"
 
 # Скачиваем файл в формате newline json

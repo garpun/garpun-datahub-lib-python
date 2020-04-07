@@ -2,7 +2,7 @@ import nox
 
 PYTHON_VERSIONS = ["3.6", "3.7", "3.8"]
 
-FLAKE_PATHS = ["datahub", "tests/test_datahub.py", "setup.py"]
+FLAKE_PATHS = ["garpundatahub", "tests/test_datahub.py", "setup.py"]
 
 LINT_DEPENDENCIES = [
     "flake8",
@@ -27,7 +27,7 @@ def lint(session):
 def cover(session):
     session.install("pytest", "pytest-cov")
     session.install(".")
-    session.run("pytest", "--cov=datahub", "--cov=tests", "--cov-report=", "tests")
+    session.run("pytest", "--cov=garpundatahub", "--cov=tests", "--cov-report=", "tests")
     session.run("coverage", "report", "--show-missing", "--fail-under=1")
     session.run("coverage", "erase")
 

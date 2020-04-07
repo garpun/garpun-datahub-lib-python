@@ -4,8 +4,8 @@ from tempfile import NamedTemporaryFile
 import pytest
 from requests import Response
 
-from datahub.client import DataHubClient
-from datahub.datahub import DataHub
+from garpundatahub.client import DataHubClient
+from garpundatahub.datahub import DataHub
 from tests.testdata import testdata_query, testdata_json_with_type, testdata_expired
 
 

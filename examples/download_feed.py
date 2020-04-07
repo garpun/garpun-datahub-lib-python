@@ -1,5 +1,5 @@
-from datahub.client import DataHubClient
-from datahub.datahub import DataHub
+from garpundatahub.client import DataHubClient
+from garpundatahub.datahub import DataHub
 
 # Этот ключ необходимо получить в интерфейсе Garpun при настройке фида.
 # Для получения эти данных не нужна дополнительная авторизация.
