@@ -13,8 +13,8 @@ if sys.version_info < (3, 6, 0):
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-with open(os.path.join(here, "README.md"), encoding="utf-8") as f:
-    long_description = f.read()
+long_description = """The Garpun DataHub API Client for Python is a client library for 
+accessing the DataHub user data. Also provides Pandas wrapper class."""
 
 # get the dependencies and installs
 with open(path.join(here, "requirements.txt"), encoding="utf-8") as f:
@@ -26,7 +26,7 @@ dependency_links = [x.strip().replace("git+", "") for x in all_reqs if x.startsw
 setup(
     name=info.__package_name__,
     version=info.__version__,
-    description="Library to work with Garpun data",
+    description="Garpun DataHub API Library for Python",
     long_description=long_description,
     url="https://github.com/garpun/garpun-auth-library-python",
     author="Garpun Cloud",
