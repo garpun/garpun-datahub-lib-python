@@ -1,3 +1,4 @@
+import gzip
 import hashlib
 import json
 import re
@@ -191,12 +192,38 @@ class DataHub(object):
         settings.update(**yaml_data.get("pandas_types", {}))
         return read_json(**settings)
 
-    def download_query_as_dict(self, query: str, shard_key: int = None) -> Iterator[Dict]:
+    def json_to_dict(self, query: str, pathfile: str = None, shard_key: int = None) -> Iterator[Dict]:
         """
+        Принимает запрос и если необоходимо скачивает данные с сервера.
+
         :param query: Запрос в формате metaql.
+        :param pathfile: Путь до файла с данными, без расширения. Например  ~/data/stats
+                         Если не передан, то файлы сохраняются в системную временную папку.
+                         Вместе с json файлом также будет сохранен yaml файл с типами данных колонок в формате pandas
         :param shard_key: Обязательной только для шардированных данных. Например для работы с ключевыми словами
         :return: Iterator[Dict]
         """
 
-        response: Response = self.call_metaql(query, shard_key)
-        return response.iter_lines(delimiter="\n", decode_unicode="utf-8")
+        if not pathfile:
+            pathfile = path.join(gettempdir(), self.__unic_query_name(query))
+
+        try:
+            with open(pathfile + ".yaml", "r") as file:
+                yaml_data = yaml_load(file, Loader=Loader)
+        except FileNotFoundError:
+            yaml_data = {}
+
+        if self.__is_time_expired(yaml_data):
+            self.__save_response_to_file(
+                response=self.call_metaql(query, shard_key),
+                pathfile=pathfile,
+                save_metadata=True,
+                expire_limit=yaml_data.get("expire_limit", 30)
+            )
+
+        with gzip.GzipFile(pathfile + ".json.gz", "r") as fin:
+            while True:
+                line = fin.readline()
+                if not line:
+                    break
+                yield json.loads(line.decode("utf-8"))
