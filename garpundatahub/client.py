@@ -19,7 +19,7 @@ class DataHubClient(object):
         json_data = {"query": query, "shardKey": shard_key}
         response = session.post(url, stream=True, json=json_data)
 
-        if response.status_code != 200:
+        if response.status_code >= 400:
             raise Exception(f"Status code is '{response.status_code}'. Reason: '{response.text}'")
 
         return response

@@ -1,5 +1,5 @@
-Введение
-========
+Garpun Datahub Python Library
+=============================
 
 |build| |pypi|
 
@@ -8,33 +8,33 @@
 .. |pypi| image:: https://img.shields.io/pypi/v/garpundatahub.svg
    :target: https://pypi.python.org/pypi/garpundatahub
 
+garpundatahub - это клиентская библиотека для доступа к данным пользователя Garpun.
+Включает в себя класс для обработки данных с помошью Pandas.
+
 Получение ключа сервисного аккаунта
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------
 
 Для начала работы с библиотекой вам необходимо получить json файл с
 ключом от сервисного аккаунта. Если у вас его ещё нет воспользуйтесь
-этой
-`инструкцией <https://cloud.garpun.com/authenticate/service_account/>`__.
+этой `инструкцией <https://cloud.garpun.com/authenticate/service_account/>`__.
 
-Установите garpundatahub
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Установка garpundatahub
+-----------------------
 
-Поддерживается Python 3.6+ Поддерживаемые операционные системы: OSx,
-Windows, Ubuntu.
+Поддерживается Python >= 3.6 Поддерживаемые операционные системы: OSX, Windows, Ubuntu.
 
-Внимание! Для использования функий оперирующих с типом Dataframe
+Внимание! Для использования функий оперирующих с типом DataFrame
 необходимо дополнительно установить pandas==1.0.3
 
 ``pip3 install garpundatahub --upgrade --no-cache``
 
-Full Examples
--------------
+Примеры
+-------
 
-`Полный список
-примеров <https://github.com/garpun/garpun-datahub-lib-python/tree/master/examples>`__
+Полный список примеров вы можете найти в `репозитории <https://github.com/garpun/garpun-datahub-lib-python/tree/master/examples>`__
 
-Usage
------
+Пример использования
+--------------------
 
 .. code:: python
 
@@ -47,7 +47,7 @@ Usage
     api_client = DataHubClient.from_service_account_file("../creds.json")
     garpun_datahub = DataHub(api_client=api_client)
 
-    # metaql запрос. Подробнее https://cloud.garpun.com/apis/datahub/overview/
+    # metaql запрос. Подробнее  https://cloud.garpun.com/api_datahub/metaql/
     query = "select id, name from adplatform.client" 
 
     # Скачиваем файл в формате newline json

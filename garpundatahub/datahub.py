@@ -158,9 +158,12 @@ class DataHub(object):
         :return: pd.DataFrame
         """
         try:
-            from pandas import read_json
+            from pandas import read_json, DataFrame, __version__ as pd_version
         except ImportError:
             raise ImportError("For use this function you should install pandas==1.0.3")
+
+        if pd_version != "1.0.3":
+            print("We dont guarantee work on a version of pandas other than 1.0.3")
 
         if not pathfile:
             pathfile = path.join(gettempdir(), self.__unic_query_name(query))
