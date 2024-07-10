@@ -10,7 +10,11 @@ class DataHubClient(object):
 
     @classmethod
     def from_service_account_file(cls, cred_file_path: str, **kw):
-        credentials: SA.Credentials = SA.Credentials.from_service_account_file(cred_file_path, scopes=["garpundatahub"], **kw)
+        credentials: SA.Credentials = SA.Credentials.from_service_account_file(
+            cred_file_path, 
+            scopes=["garpundatahub"], 
+            additional_claims={"aud": "https://account.garpun.com/oauth2/token"}
+            **kw)
         return cls(credentials)
 
     def call_metaql(self, query: str, shard_key: int = None) -> Response:
